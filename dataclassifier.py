@@ -4,12 +4,19 @@ import time
 import re
 import sys, os, traceback, optparse
 import struct
+import os.path
 
 def main():
-	largedataset = []
-	smalldataset = []
-	get_decimals_from_file("cs_170_small4.txt", smalldataset)
+	largedataset = [] #list to store the largedataset
+	smalldataset = [] #list to store the smalldataset
+	print("Welcome to Kenneth Chan's Feature Selection Algorithm\n") #welcomes user
+	filename = input("Type in the name of the file to test: ")	#takes in file
+	if os.path.isfile(filename) == False : # checks if file exists
+		sys.exit(main()) 
+	algo_number = input("Type the number of the algorithm you want to run.\n") #which algo does user want to use
+	get_decimals_from_file(filename, smalldataset) #takes in smalldataset and converts from scientific to decimal
 
+#this function takes in a file name and converts from scientific to decimal and also organizes the dataset into each class set
 def get_decimals_from_file(file_name, dataset):
 	file = open(file_name)
 	for i in file:
